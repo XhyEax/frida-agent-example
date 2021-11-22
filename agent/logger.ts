@@ -1,4 +1,4 @@
-export function log(...data: any) {
+export function log(...data: any[]) {
     // @ts-ignore
     console.log.apply(console, arguments);
 }
