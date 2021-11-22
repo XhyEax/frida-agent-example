@@ -17,3 +17,19 @@ $ npm run watch
 
 And use an editor like Visual Studio Code for code completion and instant
 type-checking feedback.
+
+### Run Inspector
+#### spawn
+```shell
+npm run spawn --pkgname=com.android.settings
+```
+
+#### attach
+```shell
+npm run attach --appname=设置
+```
+
+### Debug
+[Frida ts环境搭建（PyCharm）](https://blog.xhyeax.com/2021/11/20/frida-script-debug-env-setup-pycharm/)
+
+[Frida js调试环境搭建（VSCode + DevTools）](https://blog.xhyeax.com/2021/11/20/frida-script-debug-env-setup-vscode-devtools/)

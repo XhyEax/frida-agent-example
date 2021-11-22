@@ -1,3 +1,4 @@
-export function log(message: string): void {
-    console.log(message);
+export function log(...data: any): void {
+    // @ts-ignore
+    console.log.apply(console, arguments);
 }

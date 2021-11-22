@@ -2,16 +2,22 @@
   "name": "frida-agent-example",
   "version": "1.0.0",
   "description": "Example Frida agent written in TypeScript",
-  "private": true,
+  "private": false,
   "main": "agent/index.ts",
   "scripts": {
     "prepare": "npm run build",
     "build": "frida-compile agent/index.ts -o _agent.js -c",
-    "watch": "frida-compile agent/index.ts -o _agent.js -w"
+    "watch": "frida-compile agent/index.ts -o _agent.js -w",
+    "spawn:target": "npm run spawn --pkgname=com.android.settings",
+    "attach:target": "npm run attach --appname=设置",
+    "prespawn": "cross-env-shell adb shell am force-stop $npm_config_pkgname",
+    "spawn": "cross-env-shell frida -U --debug --runtime=v8 -l _agent.js -o out.log --no-pause -f $npm_config_pkgname",
+    "attach": "cross-env-shell frida -U --debug --runtime=v8 -l _agent.js -o out.log $npm_config_appname"
   },
   "devDependencies": {
     "@types/frida-gum": "^17.1.0",
     "@types/node": "^16.4.8",
+    "cross-env": "^7.0.3",
     "frida-compile": "^10.0.0"
   }
 }
